@@ -1,0 +1,18 @@
+<paquet
+	prefix="home"
+	categorie="outil"
+	version="1.0.0"
+	etat="test"
+	compatibilite="[3.0.0;3.0.*]"
+	logo="home-32.png"
+	documentation=""
+>
+
+	<nom>Home Page</nom>
+
+	<auteur lien='http://nursit.com'>Cédric</auteur>
+
+	<licence>GNU/GPL</licence>
+	<utilise nom="magnet" compatibilite="[;]" />
+
+</paquet>
