@@ -2,6 +2,9 @@
 .unit{float:left;_zoom:1;clear: none !important;}
 .firstUnit {clear: both !important;}
 .lastUnit {float:right;_position:relative; _left:-3px; _margin-right: -3px;}
+.unit>.inner {padding-left:10px;padding-right:10px;}
+.firstUnit>.inner {padding-left:0;}
+.lastUnit>.inner {padding-right:0;}
 .size1of1{float:none;}
 .size1of2{width:50%;}
 .size1of3{width:33.33333%;}
@@ -12,3 +15,6 @@
 .size2of5{width:40%;}
 .size3of5{width:60%;}
 .size4of5{width:80%;}
+.item.unit.of2,.item.unit.of3,.item.unit.of4,.item.unit.of5 {border-bottom: 0}
+.liste-items .item {position: relative}
+.liste-items .item .administrerhomeitem {position: absolute;top:0;left:0;}
