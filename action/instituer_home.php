@@ -31,6 +31,7 @@ function action_instituer_home_dist($arg=null) {
 		switch($action){
 			case "raz":
 				effacer_config("home");
+				$config = array();
 				break;
 			case "rowadd":
 				$config["nb_lignes"]++;
