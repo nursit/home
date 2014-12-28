@@ -17,6 +17,28 @@ if (_request('var_mode')=='home'){
 }
 
 /**
+ * Tester si la home est editable pour afficher les boutons
+ * @param bool $item
+ *   test si pour les boutons d'un item (true) ou le bouton toggle edition general (false)
+ * @return bool
+ */
+function home_editable($item=false){
+	static $editable=null;
+	if ($item AND _request('var_mode')!=='home')
+		return false;
+	if (is_null($editable)){
+		$editable = false;
+		if (isset($GLOBALS['visiteur_session']['statut'])
+			AND $GLOBALS['visiteur_session']['statut']=='0minirezo'
+			AND include_spip('inc/autoriser')
+			AND autoriser('administrer', 'home')) {
+			$editable = true;
+		}
+	}
+	return $editable;
+}
+
+/**
  * La balise renvoie le nombre d'items affiches dans la home
  * @param $p
  * @return mixed
@@ -36,19 +58,12 @@ function balise_BOUTONS_ADMIN_HOME_dist($p) {
 	$p->code = "'<style>'.spip_file_get_contents(find_in_path('css/home-grids.css')).'</style>'";
 
 	// les boutons d'admin en supplement
-	$code = "
-	if (isset(\$GLOBALS[\'visiteur_session\'][\'statut\'])
-	  AND \$GLOBALS[\'visiteur_session\'][\'statut\']==\'0minirezo\'
-		AND	include_spip(\'inc/autoriser\')
-		AND autoriser(\'administrer\',\'home\')) {
-			echo \"<div class=\'boutons spip-admin actions administrerhome\'>\"
-			. home_boutons_admin()
-			. \"</div>\";
-		}";
 
 	$p->code .= "
-.'<'.'?php
-$code
+. '<'.'?php
+	if (function_exists(\'home_editable\') AND home_editable()) {
+		echo \"<div class=\'boutons spip-admin actions administrerhome\'>\" . home_boutons_admin() . \"</div>\";
+	}
 ?'.'>'";
 
 	$p->interdire_scripts = false;
@@ -70,11 +85,7 @@ function balise_BOUTONS_ADMIN_HOME_ITEM_dist($p) {
 	// les boutons d'admin de l'item en supplement
 	$p->code = "
 '<'.'?php
-	if (isset(\$GLOBALS[\'visiteur_session\'][\'statut\'])
-	  AND \$GLOBALS[\'visiteur_session\'][\'statut\']==\'0minirezo\'
-	  AND _request(\'var_mode\')==\'home\'
-		AND	include_spip(\'inc/autoriser\')
-		AND autoriser(\'administrer\',\'home\')) {
+	if (function_exists(\'home_editable\') AND home_editable(true)) {
 			echo home_boutons_admin_item('.$_compteur.');
 		}
 ?'.'>'";
