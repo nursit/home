@@ -4,7 +4,7 @@
 			<B_articles>
 				<h2 class="h2 offscreen">A la une</h2>
 				<ul class="liste-items clearfix">
-					<BOUCLE_articles(ARTICLES){!par date} {0,#HOME_NB_ITEMS}>
+					<BOUCLE_articles(ARTICLES){!par date} {0,#HOME_NB_ITEMS}{lang}>
 					<li class="item[ (#COMPTEUR_BOUCLE|home_class_item)]">
 						<div class="inner">#INCLURE{fond=inclure/resume/article,id_article}</div>
 						#BOUTONS_ADMIN_MAGNET
