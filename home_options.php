@@ -4,7 +4,7 @@
  *
  * @plugin     Home
  * @copyright  2014
- * @author     Cédric
+ * @author     Cedric
  * @licence    GNU/GPL
  * @package    SPIP\Home\options
  */
@@ -299,13 +299,16 @@ function home_nb_items(){
  * Retourner la classe de chaque item
  * @param int $no
  *   numero de l'item, compte a partir de 1 (#COMPTEUR_BOUCLE)
+ * @param string $default_class
+ *   class par defaut quand on a depasse la grille
  * @return string
  */
-function home_class_item($no){
+function home_class_item($no,$default_class=''){
 	$items = home_items();
 	if (isset($items[$no-1]['class']))
 		return $items[$no-1]['class'];
 
-	// si on a depasse le quota car pas utilise le compteur, on renvoie des lignes de 1 item
-	return "unit of1 size1of1 firstUnit lastUnit";
+	// si on a depasse le quota car pas utilise le compteur, on renvoie
+	// $default_class ou bien des lignes de 1 item
+	return ($default_class?$default_class:"unit of1 size1of1 firstUnit lastUnit");
 }
