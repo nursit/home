@@ -2,7 +2,7 @@
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
-$GLOBALS[$GLOBALS['idx_lang']] = array(
+return [
 
 	// B
 	'bouton_home_editer' => 'Modifier la composition',
@@ -24,5 +24,4 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_home_slotshrink_title' => 'Retrecir cette colonne',
 
 	'label_confirm_reinit' => 'Reinitialiser la configuration de la home ?',
-);
-?>
+];
