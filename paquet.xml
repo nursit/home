@@ -1,9 +1,9 @@
 <paquet
 	prefix="home"
 	categorie="outil"
-	version="1.1.1"
+	version="2.0.0"
 	etat="test"
-	compatibilite="[3.0.0;4.2.*]"
+	compatibilite="[4.1.0;4.*]"
 	logo="home-32.png"
 	documentation=""
 >
